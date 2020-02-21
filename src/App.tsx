@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from "react-redux"
+import { incrementByOne, decrementByOne } from "./actions/counter.action"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IProps {
+  counter: number
+  incrementByOne: () => void
+  decrementByOne: () => void
 }
-
-export default App;
+class App extends React.Component<IProps> {
+  render() {
+    const { counter, incrementByOne, decrementByOne } = this.props
+    return (
+      <div className="App" >
+        <h1>
+          Hello Tonoy
+      </h1>
+        <div>
+          {this.props.counter}
+        </div>
+        <div>
+          <button onClick={() => incrementByOne()} >Increment</button>
+          {" "}
+          {counter > 0 && <button onClick={() => decrementByOne()} >Decrement</button>}
+        </div>
+      </div>
+    );
+  }
+}
+const mapStataToProps = (state: any) => ({
+  counter: state.counter.counter
+})
+export default connect(mapStataToProps, { incrementByOne, decrementByOne })(App);
