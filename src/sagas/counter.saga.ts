@@ -1,6 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { decrementByOne, incrementByOne } from "../actions/counter.action";
-import { COUNTER_DECREMENT, COUNTER_INCREMENT } from '../actions/types';
+import { COUNTER_DECREMENT, COUNTER_INCREMENT } from './../actions/types';
 
 function* incrementSaga() {
     yield put(incrementByOne())

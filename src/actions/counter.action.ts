@@ -1,12 +1,16 @@
-import { INCREMENT, DECREMENT } from './types';
+import { DECREMENT, INCREMENT, COUNTER_INCREMENT, COUNTER_DECREMENT } from './types';
 
-export const incrementByOne = () => {
-    return {
-        type: INCREMENT
-    }
+export const incrementByOne = () => ({
+    type: INCREMENT
 }
-export const decrementByOne = () => {
-    return {
-        type: DECREMENT
-    }
+)
+export const decrementByOne = () => ({
+    type: DECREMENT
 }
+)
+export const increment = () => ({
+    type: COUNTER_INCREMENT
+})
+export const decrement = () => ({
+    type: COUNTER_DECREMENT
+})

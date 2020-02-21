@@ -1,16 +1,16 @@
 import React from 'react';
+import { connect } from "react-redux";
 import './App.css';
-import { connect } from "react-redux"
-import { incrementByOne, decrementByOne } from "./actions/counter.action"
+import { increment, decrement } from './actions/counter.action';
 
 interface IProps {
   counter: number
-  incrementByOne: () => void
-  decrementByOne: () => void
+  increment: () => void
+  decrement: () => void
 }
 class App extends React.Component<IProps> {
   render() {
-    const { counter, incrementByOne, decrementByOne } = this.props
+    const { counter, increment, decrement } = this.props
     return (
       <div className="App" >
         <h1>
@@ -20,9 +20,9 @@ class App extends React.Component<IProps> {
           {this.props.counter}
         </div>
         <div>
-          <button onClick={() => incrementByOne()} >Increment</button>
+          <button onClick={() => increment()} >Increment</button>
           {" "}
-          {counter > 0 && <button onClick={() => decrementByOne()} >Decrement</button>}
+          {counter > 0 && <button onClick={() => decrement()} >Decrement</button>}
         </div>
       </div>
     );
@@ -31,4 +31,7 @@ class App extends React.Component<IProps> {
 const mapStataToProps = (state: any) => ({
   counter: state.counter.counter
 })
-export default connect(mapStataToProps, { incrementByOne, decrementByOne })(App);
+
+export default connect(mapStataToProps, {
+  increment, decrement
+})(App);

@@ -8,10 +8,10 @@ import sagas from "./sagas/index"
 const initialState = {}
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [sagaMiddleware, logger]
-
 const store = createStore(
     reducers,
     initialState,
     composeWithDevTools(applyMiddleware(...middleware)))
 sagaMiddleware.run(sagas)
+
 export { store }
